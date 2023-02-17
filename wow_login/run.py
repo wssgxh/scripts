@@ -30,7 +30,7 @@ def get_process_running_time(pid):
         return None
 
 
-def cloase_other_wow(wow_process_id):
+def close_other_wow(wow_process_id):
     if len(wow_process_id) > 1:
         pid_ignore = 0
         shortest_time = 9999999
@@ -90,4 +90,4 @@ if __name__ == "__main__":
 
         run_wow()
         sleep(10)
-        cloase_other_wow(get_wow_id())
+        close_other_wow(get_wow_id())
