@@ -1,10 +1,10 @@
+import time
+import subprocess
+import random
 import wmi
 import win32com.client
 import psutil
-import time
-import subprocess
 from time import sleep
-import random
 
 
 def close_programs_by_pid(pid_list, ignore):
