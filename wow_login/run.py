@@ -3,8 +3,15 @@ import win32com.client
 import psutil
 import time
 import subprocess
-from time import sleep
 import random
+import pyautogui
+import win32con
+import pyautogui
+import win32gui
+
+from time import sleep
+from actions import *
+p
 
 
 def close_programs_by_pid(pid_list, ignore):
@@ -30,7 +37,7 @@ def get_process_running_time(pid):
         return None
 
 
-def cloase_other_wow(wow_process_id):
+def close_other_wow(wow_process_id):
     if len(wow_process_id) > 1:
         pid_ignore = 0
         shortest_time = 9999999
@@ -84,10 +91,20 @@ if __name__ == "__main__":
 
     # run an another wow instance
     while True:
-        rand_time = random.uniform(500, 600)
-        print("Sleeping for", rand_time, "seconds...")
-        time.sleep(rand_time)
+        if not get_character_head():
+            print('bird head is not ready, will restart a wow')
+            run_wow()
+            sleep(10)
+            pyautogui.getWindowsWithTitle("Battle.net")[0].minimize()
+            close_other_wow(get_wow_id())
+            sleep(20)
+            switch_to_wow()
+            sleep(0.5)
+            pyautogui.press('enter')
+            if get_character_head(10):
+                random_actions()
 
-        run_wow()
-        sleep(10)
-        cloase_other_wow(get_wow_id())
+        else:
+            random_actions()
+            sleep(random.uniform(1, 10))
+

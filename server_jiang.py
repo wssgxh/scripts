@@ -1,5 +1,6 @@
 import requests
 from key import server_key
+
 KEY = server_key
 string = "https://sctapi.ftqq.com/{}.send?title=".format(KEY)
 
