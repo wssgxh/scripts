@@ -1,3 +1,3 @@
 @echo off
-python C:\scripts\run.py
+python C:\scripts\wow_login\run.py
 pause

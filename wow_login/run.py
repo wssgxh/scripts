@@ -3,11 +3,6 @@ import win32com.client
 import psutil
 import time
 import subprocess
-import random
-import pyautogui
-import win32con
-import pyautogui
-import win32gui
 
 from time import sleep
 from actions import *

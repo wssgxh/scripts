@@ -1,21 +1,14 @@
-import pyautogui
 import random
-from time import sleep
-import win32gui
-# import OpenCV
-# img = pyautogui.screenshot()
-# img.save('tmp/screenshot.png')
-# rgb = img.getpixel((100, 500))
-# print(rgb)
-# match = pyautogui.pixelMatchesColor(500,500,(12,120,400))
-# print(match)
-
 import win32gui
 import win32con
 import pyautogui
+
+from time import sleep
+
 pyautogui.PAUSE = 1
 
-action_list = ['3','5', 'space']
+action_list = ['3', '5', 'space']
+
 
 def switch_to_wow():
     window_id = win32gui.FindWindow(None, '魔獸世界')
@@ -23,9 +16,9 @@ def switch_to_wow():
     win32gui.ShowWindow(window_id, win32con.SW_SHOW)
     sleep(1)
 
-def get_character_head(time=1):
 
-    for _ in range(0,time):
+def get_character_head(time=1):
+    for _ in range(0, time):
         if pyautogui.locateOnScreen('reference/img.png', confidence=0.5):
             print('bird head detected')
             return True
@@ -41,6 +34,7 @@ def action_jump():
     pyautogui.press('w')
     pyautogui.press('w')
     pyautogui.press('space')
+
 
 def random_actions():
     switch_to_wow()
