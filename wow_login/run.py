@@ -32,6 +32,9 @@ def get_process_running_time(pid):
 
 
 def close_other_wow(wow_process_id):
+
+    minimize_window('Battle.net')
+
     if len(wow_process_id) > 1:
         pid_ignore = 0
         shortest_time = 9999999
@@ -86,23 +89,22 @@ if __name__ == "__main__":
             counter += 1
         else:
             print('wow started')
-
             break
 
         if counter > retry:
             exit(1)
 
     while True:
-
         if is_queuing():
             print('queuing, will sleep 60s')
             sleep(60)
+
         elif is_enter_wow():
             print('enter wow')
             pyautogui.press('enter')
             sleep(60)
-        elif get_character_head():
 
+        elif get_character_head():
             while True:
                 random_actions()
                 time.sleep(random.uniform(10, 30))
