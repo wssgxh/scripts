@@ -27,6 +27,20 @@ def get_character_head(time=1):
         sleep(3)
     return False
 
+def is_queuing():
+    switch_to_wow()
+    if pyautogui.locateOnScreen('reference/queuing.png', confidence=0.5):
+        return True
+    else:
+        return False
+
+def is_enter_wow():
+    switch_to_wow()
+    if pyautogui.locateOnScreen('reference/enter_wow.jpg', confidence=0.5):
+        return True
+    else:
+        return False
+
 
 def action_jump():
     switch_to_wow()
@@ -46,7 +60,6 @@ def random_actions():
 
 if __name__ == '__main__':
 
-    switch_to_wow()
-    while True:
-        sleep(2)
-        action_jump()
+    window_id = win32gui.FindWindow(None, '魔獸世界')
+    win32gui.ShowWindow(window_id, win32con.SW_SHOW)
+    sleep(1)

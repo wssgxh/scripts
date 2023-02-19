@@ -64,6 +64,14 @@ def get_wow_id():
 
     return wow_process_id
 
+def restart_wow():
+        run_wow()
+        sleep(10)
+        close_other_wow(get_wow_id())
+
+
+
+
 
 if __name__ == "__main__":
 
@@ -74,21 +82,33 @@ if __name__ == "__main__":
         if len(get_wow_id()) == 0:
             print('wow not started, try again')
             run_wow()
-            sleep(10)
+            sleep(20)
             counter += 1
         else:
             print('wow started')
+
             break
 
         if counter > retry:
             exit(1)
 
-    # run an another wow instance
     while True:
-        rand_time = random.uniform(500, 600)
-        print("Sleeping for", rand_time, "seconds...")
-        time.sleep(rand_time)
 
-        run_wow()
-        sleep(10)
-        close_other_wow(get_wow_id())
+        if is_queuing():
+            print('queuing, will sleep 60s')
+            sleep(60)
+        elif is_enter_wow():
+            print('enter wow')
+            pyautogui.press('enter')
+            sleep(60)
+        elif get_character_head():
+
+            while True:
+                random_actions()
+                time.sleep(random.uniform(10, 30))
+                if not get_character_head():
+                    restart_wow()
+                    sleep(20)
+        else:
+            restart_wow()
+
