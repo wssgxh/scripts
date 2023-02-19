@@ -109,6 +109,7 @@ if __name__ == "__main__":
                 if not get_character_head():
                     restart_wow()
                     sleep(20)
+                    break
         else:
             restart_wow()
 
